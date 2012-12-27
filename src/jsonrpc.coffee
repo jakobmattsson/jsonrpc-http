@@ -68,7 +68,7 @@ resolve = (dict, bod, debugstream, callback) ->
       if err
         callback({ id: bod.id, error: { code: -32001, message: 'API-exception', data: err.message } })
       else
-        callback({ id: bod.id, result: data })
+        callback({ id: bod.id, result: data ? null })
 
   try
     dict[bod.method].func.apply(null, apiParameters.result.concat([cb]))

@@ -1,7 +1,7 @@
 {
   "name": "jsonrpc-http",
   "description": "JSON-RPC 2.0 for web servers, using HTTP POSTs and JSONP as transports",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "main": "./lib/jsonrpc.js",
   "dependencies": {
     "async": "0.1.22",

@@ -556,6 +556,24 @@ describe "rpc call", ->
         done()
 
 
+    it "should explicitly return an empty result if none is given", (done) ->
+      listeners.push (method, args, callback) ->
+        callback(null)
+
+      rpc.answer {
+        jsonrpc: "2.0"
+        method: "subtract"
+        params: [100, 10]
+        id: 123
+      }, noErr (data) ->
+        data.should.eql
+          id: 123
+          result: null
+          jsonrpc: "2.0"
+        done()
+
+
+
 
   describe "jsonp", ->
 
@@ -607,7 +625,7 @@ describe "rpc call", ->
         v5: 5
       }, noErr (data) ->
         methods.should.eql ['update']
-        data.should.eql 'mycallback({"id":"mycallback","jsonrpc":"2.0"})'
+        data.should.eql 'mycallback({"id":"mycallback","result":null,"jsonrpc":"2.0"})'
         done()
 
 
