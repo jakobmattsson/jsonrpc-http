@@ -574,6 +574,22 @@ describe "rpc call", ->
 
 
 
+    it "should give an error if the requested method does not exist", (done) ->
+      rpc.answer {
+        jsonrpc: "2.0"
+        method: "shitface"
+        params: [100, 10]
+        id: 123
+      }, noErr (data) ->
+        data.should.eql
+          id: 123
+          error:
+            code: -32601
+            message: "Method not found."
+          jsonrpc: "2.0"
+        done()
+
+
 
   describe "jsonp", ->
 
@@ -653,6 +669,20 @@ describe "rpc call", ->
 
       rpc.answerJSONP null, { callback: 'whatever', subtrahend: undefined, minuend: 42 }, noErr (data) ->
         apiCalled.should.be.false
+        done()
+
+
+
+    it "jsonp transport: non-existing method", (done) ->
+      apiCalled = false
+
+      listeners.push (method, args, callback) ->
+        apiCalled = true
+        callback(null, 'result-data')
+
+      rpc.answerJSONP 'shitface', { callback: 'whatever' }, noErr (data) ->
+        apiCalled.should.be.false
+        data.should.eql 'whatever({"id":"whatever","error":{"code":-32601,"message":"Method not found."},"jsonrpc":"2.0"})'
         done()
 
 
