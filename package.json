@@ -11,6 +11,8 @@
     "should": "1.2.1",
     "bufferstream": "0.5.1",
     "coffee-script": "1.4.0",
+    "jscov": "0.1.1",
+    "mocha-term-cov-reporter": "0.1.0",
     "mocha": "1.7.4"
   },
   "engines": {
@@ -20,6 +22,7 @@
     "pretest": "coffee -co lib src",
     "prepublish": "coffee -co lib src",
     "start": "bin/locke",
+    "coverage": "jscov src .cov && SRC_DIR=.cov mocha --compilers coffee:coffee-script --reporter mocha-term-cov-reporter tests/*.coffee",
     "test": "mocha --compilers coffee:coffee-script tests/*.coffee"
   }
 }
