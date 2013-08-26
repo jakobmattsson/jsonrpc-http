@@ -3,20 +3,24 @@
   "description": "JSON-RPC 2.0 for web servers, using HTTP POSTs and JSONP as transports",
   "version": "0.2.0",
   "main": "./lib/jsonrpc.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jakobmattsson/jsonrpc-http.git"
+  },
   "dependencies": {
-    "async": "0.1.22",
-    "underscore": "1.4.3"
+    "async": "^0.2.9",
+    "underscore": "^1.4.3"
   },
   "devDependencies": {
-    "should": "1.2.1",
-    "bufferstream": "0.5.1",
-    "coffee-script": "1.4.0",
-    "jscov": "0.1.1",
-    "mocha-term-cov-reporter": "0.1.0",
-    "mocha": "1.7.4"
+    "should": "^1.2.1",
+    "bufferstream": "^0.6.0",
+    "coffee-script": "^1.4.0",
+    "jscov": "^0.5.7",
+    "mocha-term-cov-reporter": "^0.1.0",
+    "mocha": "^1.7.4"
   },
   "engines": {
-    "node": ">= 0.8"
+    "node": ">= 0.8 < 0.12"
   },
   "scripts": {
     "pretest": "coffee -co lib src",
