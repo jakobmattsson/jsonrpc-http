@@ -1,7 +1,7 @@
 {
   "name": "jsonrpc-http",
   "description": "JSON-RPC 2.0 for web servers, using HTTP POSTs and JSONP as transports",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "./lib/jsonrpc.js",
   "repository": {
     "type": "git",
